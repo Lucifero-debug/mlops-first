@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Vs%20Code/Python/Ml-ops/first-project/mlruns/0/9f2b4dd2bbbe4073856cf0d73d39b4cc/artifacts
+end_time: 1778853744125
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9f2b4dd2bbbe4073856cf0d73d39b4cc
+run_name: smiling-bird-63
+run_uuid: 9f2b4dd2bbbe4073856cf0d73d39b4cc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778853737045
+status: 3
+tags: []
+user_id: shish

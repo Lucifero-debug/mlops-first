@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+opsenv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Environment Variables / Secrets
+.env
+.env.*
+*.env
+
+# Logs
+logs/
+*.log
+
+# Airflow
+airflow.db
+airflow-webserver.pid
+airflow.cfg
+webserver_config.py
+airflow/logs/
+airflow/plugins/__pycache__/
+
+# DVC cache (keep dvc.yaml and dvc.lock)
+.dvc/cache/
+.dvc/tmp/
+
+# ML Artifacts
+artifacts/
+models/
+*.pkl
+*.joblib
+
+# Dataset files (optional if large)
+data/
+*.csv
+*.xlsx
+
+# Docker
+.dockerignore
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# SQLite
+*.db
+*.sqlite3
+
+# AWS Keys / PEM Files
+*.pem
+
+# Temporary files
+temp/
+tmp/

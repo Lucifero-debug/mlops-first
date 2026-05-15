@@ -1,0 +1,28 @@
+FROM apache/airflow:2.9.2-python3.10
+
+USER root
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    python3-dev
+
+RUN mkdir -p /opt/airflow/logs /opt/airflow/dags /opt/airflow/plugins && \
+    chown -R airflow:root /opt/airflow && \
+    chmod -R 775 /opt/airflow
+
+USER airflow
+
+WORKDIR /opt/airflow
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+ENV AIRFLOW_HOME=/opt/airflow
+ENV AIRFLOW_CORE_DAGBAG_IMPORT_TIMEOUT=1000
+ENV AIRFLOW_CORE_ENABLE_XCOM_PICKLING=True
+
+CMD ["airflow", "standalone"]

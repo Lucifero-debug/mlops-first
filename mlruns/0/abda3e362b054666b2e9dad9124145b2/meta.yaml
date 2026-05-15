@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Vs%20Code/Python/Ml-ops/first-project/mlruns/0/abda3e362b054666b2e9dad9124145b2/artifacts
+end_time: 1778790686892
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: abda3e362b054666b2e9dad9124145b2
+run_name: zealous-hawk-300
+run_uuid: abda3e362b054666b2e9dad9124145b2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778790686452
+status: 4
+tags: []
+user_id: shish

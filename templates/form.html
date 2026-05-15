@@ -1,0 +1,269 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #1e88e5;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover {
+            background: #1565c0;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f1f8e9;
+            border-left: 5px solid #43a047;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Credit Card Fraud Detection</h1>
+
+    <form action="{{ url_for('predict_datapoint') }}" method="POST">
+
+        <div class="grid">
+
+            <div class="form-group">
+                <label for="Time">Transaction Time</label>
+                <input type="text" name="Time" placeholder="Enter transaction time">
+            </div>
+
+            <div class="form-group">
+                <label for="Amount">Transaction Amount</label>
+                <input type="text" name="Amount" placeholder="Enter transaction amount">
+            </div>
+
+            <div class="form-group">
+                <label for="V1">V1</label>
+                <input type="text" name="V1" placeholder="Enter V1 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V2">V2</label>
+                <input type="text" name="V2" placeholder="Enter V2 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V3">V3</label>
+                <input type="text" name="V3" placeholder="Enter V3 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V4">V4</label>
+                <input type="text" name="V4" placeholder="Enter V4 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V5">V5</label>
+                <input type="text" name="V5" placeholder="Enter V5 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V6">V6</label>
+                <input type="text" name="V6" placeholder="Enter V6 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V7">V7</label>
+                <input type="text" name="V7" placeholder="Enter V7 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V8">V8</label>
+                <input type="text" name="V8" placeholder="Enter V8 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V9">V9</label>
+                <input type="text" name="V9" placeholder="Enter V9 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V10">V10</label>
+                <input type="text" name="V10" placeholder="Enter V10 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V11">V11</label>
+                <input type="text" name="V11" placeholder="Enter V11 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V12">V12</label>
+                <input type="text" name="V12" placeholder="Enter V12 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V13">V13</label>
+                <input type="text" name="V13" placeholder="Enter V13 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V14">V14</label>
+                <input type="text" name="V14" placeholder="Enter V14 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V15">V15</label>
+                <input type="text" name="V15" placeholder="Enter V15 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V16">V16</label>
+                <input type="text" name="V16" placeholder="Enter V16 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V17">V17</label>
+                <input type="text" name="V17" placeholder="Enter V17 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V18">V18</label>
+                <input type="text" name="V18" placeholder="Enter V18 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V19">V19</label>
+                <input type="text" name="V19" placeholder="Enter V19 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V20">V20</label>
+                <input type="text" name="V20" placeholder="Enter V20 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V21">V21</label>
+                <input type="text" name="V21" placeholder="Enter V21 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V22">V22</label>
+                <input type="text" name="V22" placeholder="Enter V22 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V23">V23</label>
+                <input type="text" name="V23" placeholder="Enter V23 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V24">V24</label>
+                <input type="text" name="V24" placeholder="Enter V24 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V25">V25</label>
+                <input type="text" name="V25" placeholder="Enter V25 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V26">V26</label>
+                <input type="text" name="V26" placeholder="Enter V26 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V27">V27</label>
+                <input type="text" name="V27" placeholder="Enter V27 value">
+            </div>
+
+            <div class="form-group">
+                <label for="V28">V28</label>
+                <input type="text" name="V28" placeholder="Enter V28 value">
+            </div>
+
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Predict Fraud
+        </button>
+
+    </form>
+
+    {% if results %}
+    <div class="result">
+        Prediction Result: {{ results }}
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
+```

@@ -5,3 +5,10 @@ pandas
 numpy
 ensure
 pytest
+scikit-learn
+seaborn 
+flask
+mlflow==2.2.2
+dvc
+ipykernel
+xgboost
