@@ -10,7 +10,6 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from src.pipeline.training_pipeline import TrainingPipeline
 
-training_pipeline=TrainingPipeline()
 
 with DAG(
     "gemstone_training_pipeline",
@@ -25,11 +24,13 @@ with DAG(
     dag.doc_md = __doc__
     
     def data_ingestion(**kwargs):
+        training_pipeline=TrainingPipeline()
         ti = kwargs["ti"]
         train_data_path,test_data_path=training_pipeline.start_data_ingestion()
         ti.xcom_push("data_ingestion_artifact", {"train_data_path":train_data_path,"test_data_path":test_data_path})
 
     def data_transformations(**kwargs):
+        training_pipeline=TrainingPipeline()
         ti = kwargs["ti"]
         data_ingestion_artifact=ti.xcom_pull(task_ids="data_ingestion",key="data_ingestion_artifact") 
         train_arr,test_arr=training_pipeline.start_data_transformation(data_ingestion_artifact["train_data_path"],data_ingestion_artifact["test_data_path"])
@@ -38,6 +39,7 @@ with DAG(
         ti.xcom_push("data_transformations_artifact", {"train_arr":train_arr,"test_arr":test_arr})
 
     def model_trainer(**kwargs):
+        training_pipeline=TrainingPipeline()
         import numpy as np
         ti = kwargs["ti"]
         data_transformation_artifact = ti.xcom_pull(task_ids="data_transformation", key="data_transformations_artifact")
