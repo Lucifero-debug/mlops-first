@@ -7,7 +7,7 @@ services:
     image: airflowimage
     container_name: gemstone-prediction-airflow
     ports:
-      - "8080:8080"
+      - "8080:8793"
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
