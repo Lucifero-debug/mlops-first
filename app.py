@@ -51,6 +51,7 @@ def predict_datapoint():
 )
 
         final_data=data.get_data_as_dataframe()
+        print(final_data)
 
         predict_pipeline=PredictPipeline()
 
@@ -68,4 +69,4 @@ def predict_datapoint():
 
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0",port=80)
+    app.run(host="0.0.0.0",port=80,debug=True)
