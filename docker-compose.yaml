@@ -9,7 +9,9 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - .:/opt/airflow
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
     user: "${AIRFLOW_UID:-50000}:0"
     command: bash -c "rm -f /opt/airflow/airflow-webserver.pid && airflow standalone"
     
