@@ -32,8 +32,8 @@ services:
   mlflow:
     build:
       context: ./
-      dockerfile: Dockerfile.flask
-    image: flaskimage
+      dockerfile: Dockerfile.mlflow
+    image: mlflowimage
     container_name: gemstone-prediction-mlflow
     ports:
       - "5001:5000"
