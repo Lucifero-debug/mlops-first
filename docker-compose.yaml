@@ -13,7 +13,14 @@ services:
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
     user: "${AIRFLOW_UID:-50000}:0"
-    command: bash -c "rm -f /opt/airflow/airflow-webserver.pid && airflow standalone"
+    command: bash -c "
+      rm -f /opt/airflow/airflow-webserver.pid && \
+      export AIRFLOW__WEBSERVER__WORKERS=1 && \
+      airflow standalone
+      "
+    environment:
+     AIRFLOW__CORE__LOAD_EXAMPLES=False
+     AIRFLOW__WEBSERVER__WORKERS=1
     
   flaskapp:
     build:
@@ -23,4 +30,20 @@ services:
     container_name: gemstone-prediction-flask
     ports:
       - "80:80"
+  
+  mlflow:
+    build:
+      context: ./
+      dockerfile: Dockerfile.flask
+    image: flaskimage
+    container_name: gemstone-prediction-mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/app/mlruns
+    command: bash -c "mlflow ui \
+      --host 0.0.0.0 \
+      --port 5000 \
+      --allowed-hosts '*' \
+      --backend-store-uri sqlite:///mlflow.db"
     
