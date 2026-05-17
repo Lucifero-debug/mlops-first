@@ -18,7 +18,7 @@ services:
       AIRFLOW__CORE__LOAD_EXAMPLES: "False"
 
     command: >
-      bash -c "airflow db init && airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin123 && airflow webserver --port 8080 & airflow scheduler"
+      bash -c "rm -f /opt/airflow/airflow.db && airflow db migrate && airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin123 && airflow webserver --port 8080 & airflow scheduler"
     
   flaskapp:
     build:
