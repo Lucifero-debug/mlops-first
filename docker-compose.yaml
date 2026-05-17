@@ -28,12 +28,4 @@ services:
       - "5001:5000"
     volumes:
       - ./mlruns:/app/mlruns
-    command: >
-      bash -c "
-      mlflow server \
-        --host 0.0.0.0 \
-        --port 5000 \
-        --allowed-hosts '*' \
-        --backend-store-uri sqlite:///mlflow.db
-      "
     
