@@ -8,6 +8,11 @@ services:
     container_name: gemstone-prediction-airflow
     ports:
       - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./plugins:/opt/airflow/plugins
+      - ./dataset:/opt/airflow/dataset
+      - ./src:/opt/airflow/src
     
   flaskapp:
     build:
