@@ -47,14 +47,14 @@ services:
     image: flaskimage
     container_name: gemstone-prediction-mlflow
     ports:
-      - "5000:5000"
+      - "5001:5000"
     volumes:
       - ./mlruns:/app/mlruns
     command: >
       bash -c "
       mlflow ui \
         --host 0.0.0.0 \
-        --port 5001 \
+        --port 5000 \
         --allowed-hosts '*' \
         --backend-store-uri sqlite:///mlflow.db
       "
